@@ -1,8 +1,12 @@
-CREATE TABLE Expenses (
-  id INT PRIMARY KEY,
-  Date DATE,
-  Description VARCHAR(255),
-  Amount DECIMAL(10, 2),
-  CategoryID INT,
-  FOREIGN KEY (CategoryID) REFERENCES Categories(id)
+CREATE TABLE categories (
+id SERIAL PRIMARY KEY,
+name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE expenses (
+id SERIAL PRIMARY KEY,
+description VARCHAR(255),
+amount NUMERIC NOT NULL,
+categories_id BIGINT,
+FOREIGN KEY (categories_id) REFERENCES categories(id)
 );

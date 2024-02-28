@@ -1,6 +1,9 @@
-
+cloudinary:
+  cloud-name: piensa
+  api-key: 697157638332511
+  api-secret: fQhHramPoTeRhHpomyaz71lPipo
 server:
-  port: 8083
+  port: 8180
   error:
     include-message: always
 #Configuracion de spring
@@ -10,15 +13,15 @@ spring:
     enabled: true
     baselineVersion: 1
     locations:
-    classpath: db/migration
+      classpath: db/migration
     sqlMigrationSuffixes: .sql
     baselineOnMigrate: true
     sqlMigrationPrefix: V
     schemas: public
 
   datasource:
-    url: jdbc:postgresql://bubble.db.elephantsql.com:5432/aaufunos?socketTimeout=3
-    username: aaufunos
-    password: xiwFdIbw5yhjzmVMiAl4vTVBxEilNp8N
+    url: jdbc:postgresql://bubble.db.elephantsql.com:5432/groypeyj?socketTimeout=3
+    username: groypeyj
+    password: VzIexh-gHLfdI08qNMyKav08icf48GeI
     driverClassName: org.postgresql.Driver
 
