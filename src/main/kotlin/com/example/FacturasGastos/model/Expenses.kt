@@ -1,26 +1,24 @@
 package com.example.FacturasGastos.model
 
 import jakarta.persistence.*
+import jakarta.persistence.JoinColumn
+import java.math.BigDecimal
 
 
+@Suppress("JpaAttributeTypeInspection")
 @Entity
 @Table(name = "expenses")
-class Expenses {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+class Expenses{
     @Id
-    @Column(updatable = false)
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
-    @Column(name = "fecha")
-    var date: java.sql.Date? = null
-
-    @Column(name = "descripcion")
+    @Column(nullable = false)
     var description: String? = null
 
-    @Column(name = "monto")
-    var amount: Double? = null
+    @Column(nullable = false)
+    var amount: BigDecimal? = null
 
-    @Column(name = "categoria_id")
-    var categoryId: Int? = null
+    @Column(name="categories_id")
+    var categoriesId: Long? = null
 }
