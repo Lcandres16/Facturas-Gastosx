@@ -2,6 +2,7 @@ package com.example.FacturasGastos.controller
 
 
 import com.example.FacturasGastos.model.Categories
+import com.example.FacturasGastos.model.Expenses
 import com.example.FacturasGastos.service.CategoriesService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -24,5 +25,10 @@ class CategoriesController {
     @PostMapping
     fun save(@RequestBody categories: Categories): ResponseEntity<Categories> {
         return ResponseEntity(categoriesService.save(categories), HttpStatus.OK)
+    }
+
+    @GetMapping("/{categoryId}/expenses")
+    fun getExpensesByCategory(@PathVariable categoryId: Long): List<Expenses> {
+        return categoriesService.getExpensesByCategory(categoryId)
     }
 }

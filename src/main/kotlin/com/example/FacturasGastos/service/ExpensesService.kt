@@ -17,18 +17,21 @@ class ExpensesService {
     @Autowired
     lateinit var expensesRepository: ExpensesRepository
 
-    fun list ():List<Expenses>{
+    fun list(): List<Expenses> {
         return expensesRepository.findAll()
     }
 
-    fun save(expenses: Expenses):Expenses{
+    fun save(expenses: Expenses): Expenses {
         try {
             categoriesRepository.findById(expenses.categoriesId)
-                ?: throw Exception("Id del cliente no encontrados")
+                ?: throw Exception("Id de categoría no encontrado")
             return expensesRepository.save(expenses)
-        }catch (ex : Exception){
-            throw ResponseStatusException(
-                HttpStatus.NOT_FOUND, ex.message, ex)
+        } catch (ex: Exception) {
+            throw ResponseStatusException(HttpStatus.NOT_FOUND, ex.message, ex)
         }
+    }
+
+    fun getExpensesByCategory(categoryId: Long): List<Expenses> {
+        return expensesRepository.findAllByCategoriesId(categoryId)
     }
 }
